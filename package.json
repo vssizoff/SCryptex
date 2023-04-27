@@ -17,5 +17,6 @@
     "url": "https://github.com/vssizoff/SCryptex/issues"
   },
   "homepage": "https://github.com/vssizoff/SCryptex#readme",
-  "readme": "README.md"
+  "readme": "README.md",
+  "keywords": ["crypt", "crypto", "encryption", "bcrypt", "hash", "encrypt", "decrypt", "encode", "decode"]
 }
