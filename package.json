@@ -8,5 +8,14 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "srequest_js": "^0.0.0-s3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vssizoff/SCryptex.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vssizoff/SCryptex/issues"
+  },
+  "homepage": "https://github.com/vssizoff/SCryptex#readme",
+  "readme": "README.md"
 }
