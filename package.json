@@ -1,0 +1,12 @@
+{
+  "name": "scryptex",
+  "version": "0.0.0s0",
+  "description": "",
+  "main": "SCryptex.mjs",
+  "author": "sizoff",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "srequest_js": "^0.0.0-s3"
+  }
+}
