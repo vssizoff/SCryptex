@@ -1,6 +1,6 @@
 {
   "name": "scryptex",
-  "version": "0.0.0s2",
+  "version": "0.0.0s3",
   "description": "",
   "main": "SCryptex.mjs",
   "author": "sizoff",
@@ -28,6 +28,7 @@
     "encrypt",
     "decrypt",
     "encode",
-    "decode"
+    "decode",
+    "RSA"
   ]
 }
