@@ -7,6 +7,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "crypto": "^1.0.1",
     "srequest_js": "^0.0.0-s3"
   },
   "repository": {
@@ -18,5 +19,15 @@
   },
   "homepage": "https://github.com/vssizoff/SCryptex#readme",
   "readme": "README.md",
-  "keywords": ["crypt", "crypto", "encryption", "bcrypt", "hash", "encrypt", "decrypt", "encode", "decode"]
+  "keywords": [
+    "crypt",
+    "crypto",
+    "encryption",
+    "bcrypt",
+    "hash",
+    "encrypt",
+    "decrypt",
+    "encode",
+    "decode"
+  ]
 }

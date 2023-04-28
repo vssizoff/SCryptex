@@ -68,7 +68,7 @@ export class RSA {
 export class RSAList {
     array = []
 
-    constructor(array) {
+    constructor(array = []) {
         this.array = array;
     }
 
@@ -89,10 +89,13 @@ export class RSAList {
         let elem = this.array[this.array.length - 1];
         if (delay > 0) {
             setTimeout(() => {
-                let flag = true;
+                let flag = false;
                 this.array.forEach((value, index) => {
                     if (flag) { return; }
-                    if (value === elem) { this.array.splice(index, 1); }
+                    if (value === elem) {
+                        this.array.splice(index, 1);
+                        flag = true;
+                    }
                 });
             }, delay);
         }
