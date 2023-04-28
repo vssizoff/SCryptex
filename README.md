@@ -66,7 +66,7 @@ let decrypted = rsaList.decrypt(encrypted, true); // will decrypt using one of p
 ## RSAPost
 > Function will request public key, encrypt request body and send it with POST
 ```javascript
-let promise = SCryptex.RSAPost(data, "http://localhost:8080/encrypted_data_handler",
+SCryptex.RSAPost(data, "http://localhost:8080/encrypted_data_handler",
     "http://localhost:8080/get_public_key").then(({data, status, headers, response}) => {
     console.log(data);
     console.log(status);
