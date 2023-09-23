@@ -1,14 +1,13 @@
 {
   "name": "scryptex",
-  "version": "0.0.0s3",
+  "version": "0.0.1s0",
   "description": "",
   "main": "SCryptex.mjs",
   "author": "sizoff",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.0",
-    "crypto": "^1.0.1",
-    "srequest_js": "^0.0.0-s4"
+    "bcryptjs": "^2.4.3",
+    "crypto-js": "^4.1.1"
   },
   "repository": {
     "type": "git",

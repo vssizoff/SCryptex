@@ -1,13 +1,16 @@
-import * as bcrypt from "bcrypt";
-import * as crypto from "crypto";
-import * as SRequest from "srequest_js";
+import {default as bcryptjs} from "bcryptjs";
+import {generateKeyPairSync, publicEncrypt, privateDecrypt} from "node:crypto";
 
-export function hash(data, salt = 10) {return bcrypt.hashSync(data, salt)}
+export function hash(str, salt = 16) {
+    return bcryptjs.hashSync(str, salt);
+}
 
-export let compareHash = bcrypt.compareSync;
+export function compareHash(str, hash) {
+    return bcryptjs.compareSync(str, hash);
+}
 
 export function generateRSAKeyPair() {
-    return crypto.generateKeyPairSync("rsa", {
+    return generateKeyPairSync("rsa", {
         modulusLength: 2048,
         publicKeyEncoding: {
             type: 'pkcs1',
@@ -24,7 +27,7 @@ export function generateRSAKeyPair() {
 
 export function RSAEncrypt(data, key = "") {
     if (key !== "") {
-        return crypto.publicEncrypt(key, Buffer.from(data)).toString("base64");
+        return publicEncrypt(key, Buffer.from(data)).toString("base64");
     }
     let {privateKey, publicKey} = generateRSAKeyPair();
     return {privateKey, publicKey, data: RSAEncrypt(data, publicKey)};
@@ -34,7 +37,7 @@ export function RSADecrypt(data, key) {
     // let a = Buffer.from(data, "base64");
     // let b = crypto.privateDecrypt({key: key.toString(), passphrase: ''}, a);
     // return b.toString("utf-8");
-    return crypto.privateDecrypt({key: key.toString(), passphrase: ''}, Buffer.from(data, "base64")).toString("utf-8");
+    return privateDecrypt({key: key.toString(), passphrase: ''}, Buffer.from(data, "base64")).toString("utf-8");
 }
 
 export class RSA {
@@ -115,31 +118,4 @@ export class RSAList {
         }
         return undefined;
     }
-}
-
-let defaultCfg = {
-    query: null,
-    outputType: "object",
-    headers: {},
-    getKey(data, status, headers, response) {
-        return data;
-    },
-    onGetKeyError(data, status, headers, response) {
-        console.error("Request error");
-        console.error(data);
-    },
-    getKeyQuery: null,
-    getKeyOutputType: "text",
-    getKeyHeaders: {},
-};
-
-export async function RSAPost(data, url, keyUrl, options = defaultCfg) {
-    options = SRequest.configValidator(defaultCfg, options);
-    let obj = await SRequest.getRequestSync(keyUrl, {
-        query: options.getKeyQuery,
-        outputType: options.getKeyOutputType,
-        headers: options.getKeyHeaders
-    });
-    let key = options.getKey(...obj);
-    return SRequest.postRequestSync(url, RSAEncrypt(data, key), options);
 }
