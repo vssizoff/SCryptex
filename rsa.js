@@ -26,8 +26,8 @@ export function RSADecrypt(data, key) {
 }
 
 export class RSA {
-    publicKey = undefined
-    privateKey = undefined
+    publicKey = undefined;
+    privateKey = undefined;
 
     constructor(publicKey = undefined, privateKey = undefined) {
         if (publicKey === undefined) {
@@ -52,10 +52,3 @@ export class RSA {
         return RSADecrypt(data, this.privateKey);
     }
 }
-
-// let {privateKey, publicKey} = generateRSAKeyPair();
-// console.log(privateKey);
-// console.log(publicKey);
-// let encrypted = RSAEncrypt("test", publicKey);
-// console.log(encrypted);
-// console.log(RSADecrypt(encrypted, privateKey));
