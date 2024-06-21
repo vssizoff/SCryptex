@@ -13,7 +13,7 @@
 import {RSA} from "scryptex";
 
 let rsa = new RSA; // Keys will be generated
-let rsa = new RSA({publicKey: "your public key", privateKey: "your private key"}); // or with generated keys (see supported formats in [Duck Duck Go](#key_exporting_importing))
+let rsa = new RSA({publicKey: "your public key", privateKey: "your private key"}); // or with generated keys
 ```
 ### Public encrypting
 ```javascript
@@ -58,9 +58,9 @@ rsa.publicKey = "your key";
 rsa.privateKey = "your key";
 ```
 #### Export key
-Supported formats: "openssh", "pkcs1", "pkcs8", "components"
+Supported formats: "openssh", "pkcs1", "pkcs8", "components";
 
-Second argument 
+Second argument can be "pem"(true) or "der"(false);
 ```javascript
 console.log(rsa.exportPrivateKey("pkcs8"));
 // -----BEGIN PRIVATE KEY-----
