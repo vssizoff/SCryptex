@@ -1,5 +1,5 @@
-import CryptoJS from "crypto-js"
-import NodeRSA from "node-rsa";
+import * as CryptoJS from "crypto-js"
+import * as NodeRSA from "node-rsa";
 
 export type DataType = Buffer | string | object | Array<any>;
 
@@ -10,7 +10,7 @@ export type RSAPrivateKeyType = string | Buffer | NodeRSA.KeyComponentsPrivate;
 export class RSA {
     public crypt: NodeRSA;
 
-    public constructor(options: {publicKey: RSAPublicKeyType, privateKey: RSAPrivateKeyType});
+    public constructor(options?: {publicKey?: RSAPublicKeyType, privateKey?: RSAPrivateKeyType});
 
     public generateKeyPair(): void;
     public exportPublicKey(format: RSAKeyFormatType, pem?: true): string;
@@ -44,7 +44,7 @@ export class RSA {
     public verify(data: DataType, signature: string, options?: {sourceEncoding?: NodeRSA.Encoding, signatureEncoding?: Exclude<NodeRSA.Encoding, "buffer">}): boolean;
 }
 
-export function generateRSAKeyPair(format?: RSAKeyFormatType, pem: false): {
+export function generateRSAKeyPair(format: RSAKeyFormatType | undefined, pem: false): {
     publicKey: Buffer,
     privateKey: Buffer
 };
@@ -62,13 +62,13 @@ export function generateRSAKeyPair(format: "components", pem?: boolean): {
 export function RSAEncrypt(data: DataType, key: RSAPublicKeyType, options?: {sourceEncoding?: NodeRSA.Encoding, outputEncoding?: Exclude<NodeRSA.Encoding, "buffer">}): string;
 export function RSAEncrypt(data: DataType, key: RSAPublicKeyType, options: {sourceEncoding?: NodeRSA.Encoding, outputEncoding: "buffer"}): Buffer;
 
-export function RSAEncrypt(data: DataType, key?: "", options?: {sourceEncoding?: NodeRSA.Encoding, outputEncoding?: Exclude<NodeRSA.Encoding, "buffer">}): {
+export function RSAEncrypt(data: DataType, key?: string, options?: {sourceEncoding?: NodeRSA.Encoding, outputEncoding?: Exclude<NodeRSA.Encoding, "buffer">}): {
     data: string,
     publicKey: string,
     privateKey: string
 };
 
-export function RSAEncrypt(data: DataType, key?: "", options: {sourceEncoding?: NodeRSA.Encoding, outputEncoding: "buffer"}): {
+export function RSAEncrypt(data: DataType, key: string, options: {sourceEncoding?: NodeRSA.Encoding, outputEncoding: "buffer"}): {
     data: Buffer,
     publicKey: string,
     privateKey: string
@@ -81,13 +81,13 @@ export function RSADecryptAuto(data: Buffer | string, key: RSAPrivateKeyType, en
 export function RSAEncryptPrivate(data: DataType, key: RSAPublicKeyType, options?: {sourceEncoding?: NodeRSA.Encoding, outputEncoding?: Exclude<NodeRSA.Encoding, "buffer">}): string;
 export function RSAEncryptPrivate(data: DataType, key: RSAPublicKeyType, options: {sourceEncoding?: NodeRSA.Encoding, outputEncoding: "buffer"}): Buffer;
 
-export function RSAEncryptPrivate(data: DataType, key?: "", options?: {sourceEncoding?: NodeRSA.Encoding, outputEncoding?: Exclude<NodeRSA.Encoding, "buffer">}): {
+export function RSAEncryptPrivate(data: DataType, key?: string, options?: {sourceEncoding?: NodeRSA.Encoding, outputEncoding?: Exclude<NodeRSA.Encoding, "buffer">}): {
     data: string,
     publicKey: string,
     privateKey: string
 };
 
-export function RSAEncryptPrivate(data: DataType, key?: "", options: {sourceEncoding?: NodeRSA.Encoding, outputEncoding: "buffer"}): {
+export function RSAEncryptPrivate(data: DataType, key: string, options: {sourceEncoding?: NodeRSA.Encoding, outputEncoding: "buffer"}): {
     data: Buffer,
     publicKey: string,
     privateKey: string
@@ -123,7 +123,7 @@ export function AESDecrypt(data: string, key: string, mode?: AESModeType, cfg?: 
 
 export function AESDecryptUtf8(data: string, key: string, mode?: AESModeType, cfg?: AESConfigType): string;
 
-export function AESDecryptAuto(data: string, key: string, mode?: AESModeType, cfg?: AESConfigType, encoding: BufferEncoding): {[key: string]: any} | Array<any> | number | string;
+export function AESDecryptAuto(data: string, key: string, mode: AESModeType | undefined, cfg: AESConfigType | undefined, encoding: BufferEncoding): {[key: string]: any} | Array<any> | number | string;
 
 export class AES {
     public key: string;
@@ -134,7 +134,7 @@ export class AES {
     public encrypt(data: DataType, cfg?: AESConfigType): string;
     public decrypt(data: string, cfg?: AESConfigType): Buffer;
     public decryptUtf8(data: string, cfg?: AESConfigType): string;
-    public decryptAuto(data: string, cfg?: AESConfigType, encoding: BufferEncoding): {[key: string]: any} | Array<any> | number | string;
+    public decryptAuto(data: string, cfg: AESConfigType | undefined, encoding: BufferEncoding): {[key: string]: any} | Array<any> | number | string;
 }
 
 export function hash(str: string, salt?: number | string): string;
