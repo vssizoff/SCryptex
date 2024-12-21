@@ -44,5 +44,5 @@ function aesTest() {
 }
 
 rsaKeyExportTest();
-// rsaTest();
-// aesTest();
+rsaTest();
+aesTest();

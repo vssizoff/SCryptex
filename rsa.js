@@ -1,4 +1,4 @@
-import NodeRSA from "node-rsa";
+import NodeRSA from "./node-rsa/src/NodeRSA.js";
 
 export class RSA {
     crypt = new NodeRSA();

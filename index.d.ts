@@ -1,5 +1,6 @@
 import * as CryptoJS from "crypto-js"
 import * as NodeRSA from "node-rsa";
+import {Buffer} from "buffer";
 
 export type DataType = Buffer | string | object | Array<any>;
 

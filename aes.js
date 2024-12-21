@@ -1,5 +1,6 @@
 import CryptoJS from "crypto-js";
 import {generate as generateString} from "randomstring";
+import {Buffer} from "buffer";
 
 export const AESModes = CryptoJS.mode;
 
