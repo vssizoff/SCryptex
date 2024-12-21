@@ -1,14 +1,15 @@
 import CryptoJS from "crypto-js";
-import {generate as generateString} from "randomstring";
+// import {generate as generateString} from "randomstring";
 import {Buffer} from "buffer";
 
 export const AESModes = CryptoJS.mode;
 
 export function generatePassphrase(length = 32) {
-    return generateString({
-        length,
-        charset: ["alphabetic", "numeric"]
-    });
+    // return generateString({
+    //     length,
+    //     charset: ["alphabetic", "numeric"]
+    // });
+    return "test";
 }
 
 export function generateAESKey(passphrase = "", length = 256, salt = 128) {

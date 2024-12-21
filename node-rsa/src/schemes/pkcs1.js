@@ -1,9 +1,10 @@
 /**
  * PKCS1 padding and signature scheme
  */
+var Buffer = require("buffer").Buffer;
 
 var BigInteger = require('../libs/jsbn');
-var crypt = require('crypto');
+var crypt = require('crypto-browserify');
 var constants = require('constants');
 var SIGN_INFO_HEAD = {
     md2: Buffer.from('3020300c06082a864886f70d020205000410', 'hex'),

@@ -9,6 +9,7 @@
   },
   "private": true,
   "dependencies": {
-    "buffer": "^6.0.3"
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.1"
   }
 }

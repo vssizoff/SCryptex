@@ -1,4 +1,4 @@
-var crypto = require('crypto');
+var crypto = require('crypto-browserify');
 var constants = require('constants');
 var schemes = require('../schemes/schemes.js');
 
